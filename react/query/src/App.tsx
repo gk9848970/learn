@@ -1,4 +1,4 @@
-import Pokemon from "./lessons/1-fetching-with-useEffect/first";
+import Pokemon from "./lessons/1-fetching-with-useEffect/second";
 
 function App() {
   return (

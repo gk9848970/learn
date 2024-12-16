@@ -8,6 +8,7 @@ export default function Pokemon() {
   console.log("id", id);
 
   useEffect(() => {
+    let ignore = false;
     const handleFetchPokemon = async () => {
       setPokemon(null);
       try {
@@ -15,6 +16,7 @@ export default function Pokemon() {
           getPokemonById(id),
           id === 1 ? 10000 : 0
         );
+        if (ignore) return;
         setPokemon(data!);
       } catch (err) {
         console.log(err);
@@ -22,6 +24,10 @@ export default function Pokemon() {
     };
 
     handleFetchPokemon();
+
+    return () => {
+      ignore = true;
+    };
   }, [id]);
 
   return (

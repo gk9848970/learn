@@ -3,9 +3,9 @@ import { getPokemonById, TPokemon } from "../../api/pokemon";
 import { delayPromise } from "../../utils";
 
 export default function Pokemon() {
-  const [id, setId] = useState(1);
+  const [id, setId] = useState("1");
   const [pokemon, setPokemon] = useState<TPokemon | null>(null);
-  console.log("id", id);
+
 
   useEffect(() => {
     let ignore = false;
@@ -14,7 +14,7 @@ export default function Pokemon() {
       try {
         const data = await delayPromise(
           getPokemonById(id),
-          id === 1 ? 10000 : 0
+          id === "1" ? 10000 : 0
         );
         if (ignore) return;
         setPokemon(data!);
@@ -34,7 +34,7 @@ export default function Pokemon() {
     <div>
       {pokemon && <h1>{pokemon.name}</h1>}
       <div>
-        <button onClick={() => setId(2)}>Change</button>
+        <button onClick={() => setId("2")}>Change</button>
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
-import Pokemon from "./lessons/1-fetching-with-useEffect/third";
+import { Component } from "./lessons/1-fetching-with-useEffect/context/Component";
 
 function App() {
   return (
     <div>
-      Gaurav
-      <Pokemon />
+      <Component />
     </div>
   );
 }

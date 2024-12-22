@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getPokemonById, TPokemon } from "../../api/pokemon";
 
 export default function Pokemon() {
-  const [id] = useState(1);
+  const [id] = useState("1");
   const [pokemon, setPokemon] = useState<TPokemon | null>(null);
 
   useEffect(() => {

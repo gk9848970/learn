@@ -4,12 +4,12 @@ import { delayPromise } from "../../utils";
 import { useQuery } from "../../hooks/useQuery";
 
 export default function Pokemon() {
-  const [id, setId] = useState(1);
+  const [id, setId] = useState("1");
   const callback = useCallback(
     () =>
       delayPromise(
         getPokemonById(id),
-        id === 1 ? 5000 : 0
+        id === "1" ? 5000 : 0
       ) as Promise<TPokemon>,
     [id]
   );
@@ -21,7 +21,7 @@ export default function Pokemon() {
       {pokemon && <h1>{pokemon.name}</h1>}
       {isLoading && <h1>Loading...</h1>}
       <div>
-        <button onClick={() => setId(2)}>Change</button>
+        <button onClick={() => setId("2")}>Change</button>
       </div>
     </div>
   );

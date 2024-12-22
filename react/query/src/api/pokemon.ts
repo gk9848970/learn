@@ -243,6 +243,7 @@ const pokemon = [
   },
 ];
 
-export const getPokemonById = async (id: number) => {
-  return pokemon.find((pokemon) => pokemon.id === id);
+export const getPokemonById = async (id: string) => {
+  const pokemonId = Number(id);
+  return pokemon.find((pokemon) => pokemon.id === pokemonId);
 };

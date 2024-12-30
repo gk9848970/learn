@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import { QueryContext } from "./lessons/fundamentals/query-setup";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <QueryContext />
   </StrictMode>
 );

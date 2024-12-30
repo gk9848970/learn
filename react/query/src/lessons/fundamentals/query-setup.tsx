@@ -1,12 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Deduplication } from "./deduplication";
+import { Lifecycle } from "./lifecycle";
 
 const queryClient = new QueryClient();
 
 export function QueryContext() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Deduplication />
+      <Lifecycle />
     </QueryClientProvider>
   );
 }

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-export function App() {
+export function FirstUse() {
   return (
     <div>
       <Pokemon id={"1"} />

@@ -1,12 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { FetchData } from "./5-fetch-with-fetch";
+import { QueryDependancy } from "./6-query-dependancy";
 
 const queryClient = new QueryClient();
 
 export function QueryContext() {
   return (
     <QueryClientProvider client={queryClient}>
-      <FetchData />
+      <QueryDependancy />
     </QueryClientProvider>
   );
 }

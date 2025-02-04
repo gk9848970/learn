@@ -1,13 +1,19 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { PollingData } from "./10-polling-data";
+import {
+  // DependantQuery,
+  // DependantQueryCleanedCode,
+  DependantQueryCombined,
+} from "./11-dependant-query";
 
 const queryClient = new QueryClient();
 
 export function QueryContext() {
   return (
     <QueryClientProvider client={queryClient}>
-      <PollingData />
+      {/* <DependantQuery /> */}
+      {/* <DependantQueryCleanedCode /> */}
+      <DependantQueryCombined />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

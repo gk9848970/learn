@@ -1,13 +1,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { GarbageCollection } from "./9-garbage-collection";
+import { PollingData } from "./10-polling-data";
 
 const queryClient = new QueryClient();
 
 export function QueryContext() {
   return (
     <QueryClientProvider client={queryClient}>
-      <GarbageCollection />
+      <PollingData />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

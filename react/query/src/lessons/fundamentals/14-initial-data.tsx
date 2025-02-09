@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 const fetchPosts = async () => {
@@ -18,7 +18,6 @@ export const Prefetching = () => {
   const [selectedPost, setSelectedPost] = useState<number | undefined>(
     undefined
   );
-  const queryClient = useQueryClient();
 
   if (selectedPost) {
     return (
@@ -63,18 +62,6 @@ export const Prefetching = () => {
                 padding: 10,
                 cursor: "pointer",
               }}
-              onMouseEnter={() => {
-                queryClient.prefetchQuery({
-                  queryKey: ["posts", post.id],
-                  queryFn: async () => {
-                    const response = await fetch(
-                      `https://jsonplaceholder.typicode.com/posts/${post.id}`
-                    );
-                    return await response.json();
-                  },
-                  staleTime: 5000,
-                });
-              }}
             >
               <h2>{post.title}</h2>
               <p>{post.body}</p>
@@ -100,12 +87,8 @@ const PostComponent = ({ postId }: { postId: number }) => {
       );
       return await response.json();
     },
-    /*
-    When we come here from the prefetch, The query will be set with staleTime of 0 as default
-    Which means if time between the last fetch and now is greater than 0 then it will refetch
-    Which means it will always refetch on mount
-    */
-    // staleTime: 5000,
+    // Even if cached data is available, we want to refetch it on mount or not
+    // refetchOnMount: false,
   });
 
   return (

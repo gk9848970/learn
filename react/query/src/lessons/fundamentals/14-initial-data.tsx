@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 const fetchPosts = async () => {
@@ -7,13 +7,14 @@ const fetchPosts = async () => {
   return data.splice(0, 10);
 };
 
-const usePosts = () =>
-  useQuery({
+const usePosts = () => {
+  return useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
+};
 
-export const Prefetching = () => {
+export const InitialData = () => {
   const posts = usePosts();
   const [selectedPost, setSelectedPost] = useState<number | undefined>(
     undefined
@@ -79,6 +80,8 @@ export const Prefetching = () => {
 };
 
 const PostComponent = ({ postId }: { postId: number }) => {
+  const queryClient = useQueryClient();
+
   const post = useQuery({
     queryKey: ["posts", postId],
     queryFn: async () => {
@@ -87,8 +90,12 @@ const PostComponent = ({ postId }: { postId: number }) => {
       );
       return await response.json();
     },
-    // Even if cached data is available, we want to refetch it on mount or not
-    // refetchOnMount: false,
+    initialData: () => {
+      const posts = queryClient.getQueryData<any[]>(["posts"]);
+      return posts?.find((post) => post.id === postId);
+    },
+    // The inital data is good for 5 seconds
+    staleTime: 5000,
   });
 
   return (

@@ -38,6 +38,19 @@ export const PerformanceOptimisations = () => {
     console.log("posts.isFetching changed");
   }, [posts.isFetching]);
 
+  /*
+  - Good idea, As component will re-render only if data or error changes in posts object.
+  const { data, error } = usePosts(); 
+
+  - Good idea, As component will re-render only if data or error changes in posts object.
+  const posts = usePosts();
+  const data = posts.data;
+  const error = posts["error"];
+
+  - Bad idea, As component will re-render on every change in posts object.
+  const { data, ...rest } = usePosts();
+  */
+
   return (
     <div>
       <h1>Structural Sharing</h1>

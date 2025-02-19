@@ -1,13 +1,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { AbortControllerSignal } from "./25-abort-controller-signal";
+import { Retries } from "./26-retries";
 
 const queryClient = new QueryClient();
 
 export function QueryContext() {
   return (
     <QueryClientProvider client={queryClient}>
-      <AbortControllerSignal />
+      <Retries />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

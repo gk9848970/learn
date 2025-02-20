@@ -1,26 +1,35 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  QueryErrorResetBoundary,
+} from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { ErrorBoundary } from "react-error-boundary";
-import { ThrowingErrorSilently } from "./29-throwing-error-silently";
+import { ErrorBoundary, FallbackProps } from "react-error-boundary";
+import { ResettingErrorBoundary } from "./30-resetting-error-boundary";
 
 const queryClient = new QueryClient();
 
-function ErrorFallback({ error }: { error: Error }) {
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
     <div role="alert">
       <p>Something went wrong:</p>
       <pre>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button>
     </div>
   );
 }
 
 export function QueryContext() {
   return (
-    <ErrorBoundary fallbackRender={ErrorFallback}>
-      <QueryClientProvider client={queryClient}>
-        <ThrowingErrorSilently />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <QueryErrorResetBoundary>
+        {({ reset }) => (
+          <ErrorBoundary onReset={reset} fallbackRender={ErrorFallback}>
+            <ResettingErrorBoundary />
+          </ErrorBoundary>
+        )}
+      </QueryErrorResetBoundary>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }

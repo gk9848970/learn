@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary } from "react-error-boundary";
-import { ThrowingError } from "./27-throwing-error";
+import { ThrowingErrorSilently } from "./29-throwing-error-silently";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +18,7 @@ export function QueryContext() {
   return (
     <ErrorBoundary fallbackRender={ErrorFallback}>
       <QueryClientProvider client={queryClient}>
-        <ThrowingError />
+        <ThrowingErrorSilently />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ErrorBoundary>

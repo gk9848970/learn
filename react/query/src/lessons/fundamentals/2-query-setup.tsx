@@ -1,13 +1,22 @@
 import {
+  QueryCache,
   QueryClient,
   QueryClientProvider,
   QueryErrorResetBoundary,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
-import { ResettingErrorBoundary } from "./30-resetting-error-boundary";
+import { ErrorImperativeHandling } from "./31-error-imperative-handling";
+import toast from "react-hot-toast";
 
-const queryClient = new QueryClient();
+// Error will be thrown only once even when two components are there for same query
+const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  }),
+});
 
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
@@ -25,7 +34,7 @@ export function QueryContext() {
       <QueryErrorResetBoundary>
         {({ reset }) => (
           <ErrorBoundary onReset={reset} fallbackRender={ErrorFallback}>
-            <ResettingErrorBoundary />
+            <ErrorImperativeHandling />
           </ErrorBoundary>
         )}
       </QueryErrorResetBoundary>

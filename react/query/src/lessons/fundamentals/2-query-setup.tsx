@@ -6,14 +6,23 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
-import { ErrorImperativeHandling } from "./31-error-imperative-handling";
 import toast from "react-hot-toast";
+import { ErrorConfigs } from "./32-error-configs";
 
-// Error will be thrown only once even when two components are there for same query
+// Opinionated Config, Which throws error if data is not there and otherwise shows a toast only once per query
 const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      throwOnError: (_error, query) => {
+        return query.state.data === undefined;
+      },
+    },
+  },
   queryCache: new QueryCache({
-    onError: (error) => {
-      toast.error(error.message);
+    onError: (error, query) => {
+      if (query.state.data !== undefined) {
+        toast.error(error.message);
+      }
     },
   }),
 });
@@ -34,7 +43,7 @@ export function QueryContext() {
       <QueryErrorResetBoundary>
         {({ reset }) => (
           <ErrorBoundary onReset={reset} fallbackRender={ErrorFallback}>
-            <ErrorImperativeHandling />
+            <ErrorConfigs />
           </ErrorBoundary>
         )}
       </QueryErrorResetBoundary>

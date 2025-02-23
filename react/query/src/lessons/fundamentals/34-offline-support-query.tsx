@@ -53,7 +53,7 @@ export const OfflineSupportQuery = () => {
 
   return (
     <div>
-      <h1>Query Data Validation</h1>
+      <h1>Offline support query</h1>
       <h2>Posts</h2>
       {posts.isLoading && <div>Loading</div>}
       {posts.isError && <div>Error</div>}

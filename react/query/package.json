@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/query-sync-storage-persister": "^5.66.4",
     "@tanstack/react-query": "^5.62.11",
     "@tanstack/react-query-devtools": "^5.64.1",
+    "@tanstack/react-query-persist-client": "^5.66.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^5.0.0",

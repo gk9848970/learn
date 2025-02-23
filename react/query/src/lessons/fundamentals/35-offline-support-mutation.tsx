@@ -50,6 +50,7 @@ const usePosts = () => {
   const query = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
+      await delayPromise(10000);
       const response = await fetch(API);
       const data = await response.json();
       return data;
@@ -65,7 +66,7 @@ export const OfflineSupportMutation = () => {
 
   return (
     <div>
-      <h1>Query Data Validation</h1>
+      <h1>Offline support mutation</h1>
       <h2>Posts</h2>
 
       {posts.isLoading && <div>Loading</div>}

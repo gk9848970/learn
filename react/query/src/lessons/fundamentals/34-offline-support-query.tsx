@@ -46,7 +46,7 @@ const useMagicNumber = (networkMode: NetworkMode) => {
   return query;
 };
 
-export const OffineSupportQuery = () => {
+export const OfflineSupportQuery = () => {
   const comments = useComments("online");
   const posts = usePosts("offlineFirst");
   const magicNumber = useMagicNumber("always");

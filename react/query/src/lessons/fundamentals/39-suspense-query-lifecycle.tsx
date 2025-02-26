@@ -80,6 +80,8 @@ For suspense inside suspense
 The inner suspense query also runs in parallel with the outer suspense query.
 Even if inner suspense query is resolved but outer is pending, We will see outer suspense fallback.
 If inner suspense query takes more time, The outer will show it's own data and the inner will show fallback.
+
+The case of error is like normal, Error will be untill some error boundary catches it.
 */
 
 export function SuspenseQueriesLifeCycle() {

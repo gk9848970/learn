@@ -82,6 +82,11 @@ Even if inner suspense query is resolved but outer is pending, We will see outer
 If inner suspense query takes more time, The outer will show it's own data and the inner will show fallback.
 
 The case of error is like normal, Error will be untill some error boundary catches it.
+
+You can imagine the lifecycle in case of two suspense query hooks in same component as well
+This will cause a waterfall and queries will be resolved one by one.
+This means two things, For running in parallel, we need useSuspenseQueries
+There is no need of enabled property as queries run in serial.
 */
 
 export function SuspenseQueriesLifeCycle() {

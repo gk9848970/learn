@@ -95,12 +95,12 @@ export function SuspenseQueriesLifeCycle() {
       <h1>Query Defaults</h1>
       <p>Suspension of Queries</p>
       <div style={{ display: "flex", gap: 20 }}>
-        <Suspense fallback={<div>Loading... Posts</div>}>
-          <Posts />
-        </Suspense>
-        <Suspense fallback={<div>Loading... Users</div>}>
-          <Users />
-        </Suspense>
+        {/* <Suspense fallback={<div>Loading... Posts</div>}> */}
+        <Posts />
+        {/* </Suspense> */}
+        {/* <Suspense fallback={<div>Loading... Users</div>}> */}
+        <Users />
+        {/* </Suspense> */}
 
         {/* 
         <Suspense fallback={<div>Loading... Posts</div>}>

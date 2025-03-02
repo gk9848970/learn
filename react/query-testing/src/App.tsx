@@ -1,12 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { DevicesComponent } from "./devices";
+import { PostEditComponent } from "./posts";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <DevicesComponent />
+      <PostEditComponent postId={1} />
     </QueryClientProvider>
   );
 }

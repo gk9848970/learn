@@ -1,24 +1,10 @@
 import { afterAll, afterEach, beforeAll, describe, expect, test } from "vitest";
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { PostComponent } from "../posts";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
-
-const renderWithQueryClient = (ui: React.ReactElement) => {
-  const testQueryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-      },
-    },
-  });
-
-  return render(
-    <QueryClientProvider client={testQueryClient}>{ui}</QueryClientProvider>
-  );
-};
+import { renderWithQueryClient } from "./utils";
 
 describe("Testing query without mock server", () => {
   test("Renders post", async () => {

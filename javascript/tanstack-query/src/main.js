@@ -1,4 +1,20 @@
+import "./simpleWidget";
+
 $(document).ready(function () {
-  console.log("jQuery is working!", $.widget);
-  $("#app").html("<h1>Hello from jQuery + Vite!</h1>");
+  console.log("jQuery is working!");
+
+  const destroyButton = $("<button>Unmount Widget</button>");
+  destroyButton.on("click", function () {
+    $("#app").simpleWidget("destroy");
+  });
+
+  const createButton = $("<button>Mount Widget</button>");
+  createButton.on("click", function () {
+    $("#app").simpleWidget({
+      div: $("<div>Hello from jQuery + Vite!</div>"),
+    });
+  });
+
+  $("#app").append(destroyButton);
+  $("#app").append(createButton);
 });

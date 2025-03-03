@@ -1,5 +1,6 @@
-import PostsWithServer from "@/components/posts-server";
+import PostsWithQuery from "@/components/posts-query";
 
+// See page source - It doesn't contain data
 export default async function Home() {
-  return <PostsWithServer />;
+  return <PostsWithQuery />;
 }

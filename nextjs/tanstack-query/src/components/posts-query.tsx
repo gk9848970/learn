@@ -1,10 +1,12 @@
+"use client";
+
 import { fetchPosts, Post } from "@/api";
 import { useQuery } from "@tanstack/react-query";
 
 export default function PostsWithQuery({
   initialData,
 }: {
-  initialData: Post[];
+  initialData?: Post[];
 }) {
   const posts = useQuery({
     queryKey: ["posts"],
@@ -14,7 +16,7 @@ export default function PostsWithQuery({
 
   return (
     <ul>
-      {posts.data.map((post) => (
+      {posts.data?.map((post) => (
         <li key={post.id}>{post.title}</li>
       ))}
     </ul>

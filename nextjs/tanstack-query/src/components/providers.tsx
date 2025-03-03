@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, { useRef } from "react";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 
 export default function Providers({
   children,
@@ -21,8 +21,7 @@ export default function Providers({
 
   return (
     <QueryClientProvider client={queryClient.current}>
-      {children}
-      <ReactQueryDevtools initialIsOpen={false} />
+      <ReactQueryStreamedHydration>{children}</ReactQueryStreamedHydration>
     </QueryClientProvider>
   );
 }

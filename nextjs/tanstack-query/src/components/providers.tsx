@@ -9,7 +9,13 @@ export default function Providers({
   const queryClient = useRef<undefined | QueryClient>(undefined);
 
   if (!queryClient.current) {
-    queryClient.current = new QueryClient();
+    queryClient.current = new QueryClient({
+      defaultOptions: {
+        queries: {
+          staleTime: 1000 * 10,
+        },
+      },
+    });
   }
 
   return (

@@ -16,6 +16,14 @@ $.widget("custom.useQuery", {
     });
   },
 
+  _setOption(key, value) {
+    this._super(key, value);
+
+    if (key === "queryOptions") {
+      this._observer.setOptions(value);
+    }
+  },
+
   _destroy() {
     this.options.queryClient.unmount();
     this._unsubscribe();

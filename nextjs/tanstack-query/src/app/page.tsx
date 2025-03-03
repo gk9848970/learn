@@ -1,6 +1,9 @@
+import { fetchPosts } from "@/api";
 import PostsWithQuery from "@/components/posts-query";
 
-// See page source - It doesn't contain data
+// See page source
 export default async function Home() {
-  return <PostsWithQuery />;
+  const posts = await fetchPosts();
+
+  return <PostsWithQuery initialData={posts} />;
 }

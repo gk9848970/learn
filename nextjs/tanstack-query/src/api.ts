@@ -18,3 +18,6 @@ export const fetchPaginatedPosts = async (page: number) => {
   const data = (await response.json()) as Post[];
   return data;
 };
+
+export const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));

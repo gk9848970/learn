@@ -1,24 +1,20 @@
 "use client";
 
 import { fetchPaginatedPosts } from "@/api";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
-export default function PostsWithQueryPagination({
+export default function PostsWithQuerySuspense({
   page = 1,
 }: {
   page?: number;
 }) {
-  const posts = useQuery({
+  const posts = useSuspenseQuery({
     queryKey: ["posts", page],
     queryFn: () => {
       console.log("fetching posts for page", page);
       return fetchPaginatedPosts(page);
     },
   });
-
-  if (posts.isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <ul>

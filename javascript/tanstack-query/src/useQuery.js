@@ -11,7 +11,8 @@ $.widget("custom.useQuery", {
 
     this._unsubscribe = this._observer.subscribe(() => {
       const result = this._observer.getCurrentResult();
-      this._trigger("update", null, result);
+      // Now update will only run if result gets changed, Even if a refetch happens
+      this._trigger("update", null, this._observer.trackResult(result));
     });
   },
 

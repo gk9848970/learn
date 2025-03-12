@@ -1,15 +1,21 @@
+import { useQueryClient } from "../adapter/query-client-provider";
 import { useQuery } from "../adapter/use-query";
 
 export const Posts = () => {
-  const posts = useQuery({
-    queryKey: ["posts"],
-    queryFn: async () => {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
-      return await response.json();
+  const queryClient = useQueryClient();
+
+  const posts = useQuery(
+    {
+      queryKey: ["posts"],
+      queryFn: async () => {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+        return await response.json();
+      },
     },
-  });
+    queryClient
+  );
 
   console.log({
     error: posts.isError,

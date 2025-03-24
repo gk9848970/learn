@@ -1,5 +1,5 @@
 import { QueryObserver } from "@tanstack/query-core";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 export function useQuery(options, client) {
   const defaultedOptions = client.defaultQueryOptions(options);
@@ -12,19 +12,9 @@ export function useQuery(options, client) {
   );
 
   // Get the initial optimistic result
-  const [result, setResult] = useState(() =>
-    observer.getOptimisticResult(defaultedOptions)
-  );
+  const result = observer.getOptimisticResult(defaultedOptions);
 
-  useEffect(() => {
-    // Set up subscription to observer changes
-    const unsubscribe = observer.subscribe(() => {
-      // Update result to current results
-      setResult(observer.getCurrentResult());
-    });
-
-    return unsubscribe;
-  }, [observer]);
+  useSyncExternalStore(observer.subscribe, () => observer.getCurrentResult());
 
   return result;
 }

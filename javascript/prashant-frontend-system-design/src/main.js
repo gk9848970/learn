@@ -1,19 +1,15 @@
-import { highestCommodityPriceWithCheckpoint } from "./javascript-based-problems/highest-commodity-price.js";
+import { SDK } from "./javascript-based-problems/create-analytics-sdk";
 
-console.log(
-  highestCommodityPriceWithCheckpoint({
-    data: [
-      { timestamp: 1, price: 1 },
-      { timestamp: 1, price: 4 },
-      { timestamp: 1, price: 2 },
-      { timestamp: 1, price: 2, checkpoint: "a" },
-      { timestamp: 1, price: 6 },
-      { timestamp: 1, price: 7 },
-      { timestamp: 1, price: 8, checkpoint: "b" },
-    ],
-    queries: [
-      { timestamp: 1, checkpoint: "a" },
-      { timestamp: 1, checkpoint: "b" },
-    ],
-  })
-);
+const sdk = new SDK();
+
+sdk.logEvent("event 1");
+sdk.logEvent("event 2");
+sdk.logEvent("event 3");
+sdk.logEvent("event 4");
+sdk.logEvent("event 5");
+sdk.logEvent("event 6");
+sdk.logEvent("event 7");
+sdk.logEvent("event 8");
+sdk.logEvent("event 9");
+sdk.logEvent("event 10");
+sdk.send();

@@ -1,17 +1,17 @@
-import { sampler } from "./javascript-based-problems/sampler";
+import { removeCycle } from "./javascript-based-problems/remove-cycle";
 
-const obj = {
-  name: "Gaurav",
-  message(msg) {
-    console.log(`Hello, ${this?.name}`, msg);
-  },
+const List = function (val) {
+  this.next = null;
+  this.val = val;
 };
 
-const sample = sampler(obj.message, 3, obj);
+const item1 = new List(10);
+const item2 = new List(20);
+const item3 = new List(30);
 
-sample("Khyati");
-sample("Khyati");
-sample("Khyati1"); // This should log "Hello, Gaurav"
-sample("Khyati");
-sample("Khyati");
-sample("Khyati2"); // This should log "Hello, Gaurav"
+item1.next = item2;
+item2.next = item3;
+item3.next = item1;
+
+removeCycle(item1);
+console.log(item1);

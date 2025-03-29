@@ -1,15 +1,17 @@
-import { SDK } from "./javascript-based-problems/create-analytics-sdk";
+import { sampler } from "./javascript-based-problems/sampler";
 
-const sdk = new SDK();
+const obj = {
+  name: "Gaurav",
+  message(msg) {
+    console.log(`Hello, ${this?.name}`, msg);
+  },
+};
 
-sdk.logEvent("event 1");
-sdk.logEvent("event 2");
-sdk.logEvent("event 3");
-sdk.logEvent("event 4");
-sdk.logEvent("event 5");
-sdk.logEvent("event 6");
-sdk.logEvent("event 7");
-sdk.logEvent("event 8");
-sdk.logEvent("event 9");
-sdk.logEvent("event 10");
-sdk.send();
+const sample = sampler(obj.message, 3, obj);
+
+sample("Khyati");
+sample("Khyati");
+sample("Khyati1"); // This should log "Hello, Gaurav"
+sample("Khyati");
+sample("Khyati");
+sample("Khyati2"); // This should log "Hello, Gaurav"

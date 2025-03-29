@@ -1,35 +1,51 @@
 /*
-Input:
-const List = function(val){
-  this.next = null;
-  this.val = val;
-};
+let obj1 = { name: "A" };
+let obj2 = { name: "B" };
+let obj3 = { name: "C" };
+let obj4 = { name: "D" };
 
-const item1 = new List(10);
-const item2 = new List(20);
-const item3 = new List(30);
+// Introduce complex references
+obj1.child = obj2;
+obj2.child = obj3;
+obj3.child = obj4;
+obj4.child = obj2; // Indirect cycle (obj4 → obj2)
 
-item1.next = item2;
-item2.next = item3;
-item3.next = item1;
+// Direct self-cycle
+obj1.self = obj1;
 
-removeCycle(item1);
-console.log(item1);
+// // Shared reference (non-cycle, should remain)
+let sharedObj = { name: "Shared" };
+obj2.shared = sharedObj;
+obj3.shared = sharedObj;
 
-Output:
-/*
-{val: 10, next: {val: 20, next: {val: 30}}}
+// Apply cycle removal
+removeCycle(obj1);
+console.log(JSON.stringify(obj1, null, 2));
 */
 
 export function removeCycle(item) {
-  let current = item;
   const weakset = new WeakSet();
 
-  while (current) {
-    if (weakset.has(current.next)) {
-      delete current.next;
+  function iterateObj(obj) {
+    weakset.add(obj);
+
+    for (let key in obj) {
+      if (Object.hasOwn(obj, key)) {
+        const value = obj[key];
+
+        if (typeof value === "object" && value !== null) {
+          if (weakset.has(value)) {
+            delete obj[key];
+          } else {
+            iterateObj(value);
+          }
+        }
+      }
     }
-    weakset.add(current);
-    current = current.next;
+
+    // Important for shared reference case
+    weakset.delete(obj);
   }
+
+  iterateObj(item);
 }

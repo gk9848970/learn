@@ -1,24 +1,25 @@
-import { removeCycle } from "./javascript-based-problems/remove-cycle";
+import { Move } from "./javascript-based-problems/publisher-subscriber-1";
 
-let obj1 = { name: "A" };
-let obj2 = { name: "B" };
-let obj3 = { name: "C" };
-let obj4 = { name: "D" };
+const moveHandler = function (item) {
+  console.log("fired: " + item);
+};
 
-// Introduce complex references
-obj1.child = obj2;
-obj2.child = obj3;
-obj3.child = obj4;
-obj4.child = obj2; // Indirect cycle (obj4 → obj2)
+// 2nd observer
+const moveHandler2 = function (item) {
+  console.log("Moved: " + item);
+};
 
-// Direct self-cycle
-obj1.self = obj1;
+const move = new Move();
 
-// // Shared reference (non-cycle, should remain)
-let sharedObj = { name: "Shared" };
-obj2.shared = sharedObj;
-obj3.shared = sharedObj;
+// subscribe 1st observer
+move.subscribe(moveHandler);
+move.fire("event #1");
 
-// Apply cycle removal
-removeCycle(obj1);
-console.log(JSON.stringify(obj1, null, 2));
+// unsubscribe 1st observer
+move.unsubscribe(moveHandler);
+move.fire("event #2");
+
+// subscribe 1st & 2nd observer
+move.subscribe(moveHandler);
+move.subscribe(moveHandler2);
+move.fire("event #3");

@@ -44,3 +44,11 @@ events.publish("new-user", "Foo Once");
 events.publish("new-user", "Foo Twice");
 //output: "Sending Q2 News to: Foo Twice" - normal event
 // once event should not invoke for second time
+
+events.subscribeOnceAsync("new-user").then(function (payload) {
+  console.log(`I am invoked once ${payload}`);
+});
+
+events.publish("new-user", "Foo Once Async");
+//output: "Sending Q2 News to: Foo Once Async"
+//output: "I am invoked once Foo Once Async"

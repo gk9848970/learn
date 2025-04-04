@@ -42,7 +42,8 @@ events.publish("new-user", "Foo Twice");
 export class Events {
   constructor() {
     this.events = {};
-    this.set = new Set();
+    this.onceEvents = {};
+    this.asyncEvents = {};
   }
 
   subscribe = (event, callback) => {
@@ -51,48 +52,71 @@ export class Events {
     }
 
     this.events[event].push(callback);
-    console.log(this.events[event], "Subscribe");
 
     return {
       remove: () => {
         this.events[event] = this.events[event].filter(
           (handler) => handler != callback
         );
-
-        console.log(this.events[event], "Subscribe remove");
       },
     };
   };
 
   publish = (event, ...args) => {
+    this.publishNormalEvents(event, ...args);
+    this.publishOnceEvents(event, ...args);
+    this.publishAsyncEvents(event, ...args);
+  };
+
+  publishNormalEvents = (event, ...args) => {
     if (this.events[event]) {
-      this.events[event].forEach((handler) => {
-        handler(...args);
-      });
-
-      this.events[event] = this.events[event].filter((handler) => {
-        const doesSetHas = this.set.has(handler);
-        if (doesSetHas) this.set.delete(handler);
-        return doesSetHas ? false : true;
-      });
+      this.events[event].forEach((handler) => handler(...args));
     }
+  };
 
-    console.log(this.events[event], "Publish");
+  publishOnceEvents = (event, ...args) => {
+    if (this.onceEvents[event]) {
+      this.onceEvents[event].forEach((handler) => handler(...args));
+      this.onceEvents[event] = [];
+    }
+  };
+
+  publishAsyncEvents = (event, ...args) => {
+    if (this.asyncEvents[event]) {
+      this.asyncEvents[event].forEach((handler) => handler(...args));
+      this.asyncEvents[event] = [];
+    }
   };
 
   publishAll = (...args) => {
-    Object.keys(this.events).forEach((event) => this.publish(event, ...args));
-    console.log(this.events, "Publish All");
+    Object.keys(this.events).forEach((event) =>
+      this.publishNormalEvents(event, ...args)
+    );
+
+    Object.keys(this.onceEvents).forEach((event) =>
+      this.publishOnceEvents(event, ...args)
+    );
+
+    Object.keys(this.asyncEvents).forEach((event) =>
+      this.publishAsyncEvents(event, ...args)
+    );
   };
 
   subscribeOnce = (event, callback) => {
-    if (this.events[event] === undefined) {
-      this.events[event] = [];
+    if (this.onceEvents[event] === undefined) {
+      this.onceEvents[event] = [];
     }
 
-    this.events[event].push(callback);
-    this.set.add(callback);
+    this.onceEvents[event].push(callback);
   };
 
-  subscribeOnceAsync = (...args) => {};
+  subscribeOnceAsync = (event) => {
+    if (this.asyncEvents[event] === undefined) {
+      this.asyncEvents[event] = [];
+    }
+
+    return new Promise((res) => {
+      this.asyncEvents[event].push(res);
+    });
+  };
 }

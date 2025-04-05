@@ -1,13 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <style>
+      #root {
+        display: flex;
+        gap: 8px;
+      }
+
+      #root > div {
+        border: 1px solid;
+        width: 50px;
+        height: 50px;
+      }
+
+      .alpha {
+        padding: 10px 10px;
+        background-color: red;
+        border-style: dotted !important;
+      }
+
+      .beta {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+        background-color: #000;
+      }
+
+      .gamma {
+        padding: 10px 0 0;
+        background-color: rgb(255, 0, 0);
+      }
+    </style>
   </head>
+
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div id="root">
+        <div class="alpha"></div>
+        <div class="beta"></div>
+        <div class="gamma"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

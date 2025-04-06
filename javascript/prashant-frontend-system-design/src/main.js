@@ -1,9 +1,22 @@
-import { getElementsByStyle } from "./javascript-based-problems/get-elements-by-style";
+import { currying } from "./javascript-based-problems/currying-4";
 
-const answer = getElementsByStyle(
-  document.getElementById("root"),
-  "paddingTop",
-  "10px"
-);
+function sum(a, b, c, d) {
+  return a + b + c + d;
+}
 
-console.log(answer);
+let curriedSum = currying(sum);
+
+console.log(curriedSum(1, 2, 3, 4));
+console.log(curriedSum(1)(2, 3)(4));
+console.log(curriedSum(1)(2)(3)(4));
+
+const obj = {
+  value: 10,
+  method: currying(function (a, b) {
+    return a + b + this.value;
+  }),
+};
+
+// Here, "this" should be the obj
+const result = obj.method(1, 2);
+console.log(result);

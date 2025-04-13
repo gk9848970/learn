@@ -1,28 +1,21 @@
 import {
-  dummyApi,
-  QueueCallbacks,
-} from "./javascript-based-problems/async-callbacks-engine";
+  customSetTimeout,
+  clearAllTimeouts,
+} from "./javascript-based-problems/clear-all-timeouts";
 
-// const asyncCallbacks = new QueueCallbacks();
-// asyncCallbacks.process(dummyApi(1));
-// asyncCallbacks.process(dummyApi(2));
-// asyncCallbacks.process(dummyApi(6));
-// asyncCallbacks.process(dummyApi(4));
-// asyncCallbacks.process(dummyApi(5));
-// asyncCallbacks.process(dummyApi(6));
-// asyncCallbacks.process(dummyApi(7));
-// asyncCallbacks.process(dummyApi(8));
-// asyncCallbacks.process(dummyApi(9));
-// asyncCallbacks.process(dummyApi(10));
+const id1 = customSetTimeout(() => {
+  console.log("hello 1");
+}, 1000);
 
-const asyncCallbacks = new QueueCallbacks("LIFO");
-asyncCallbacks.process(dummyApi(1));
-asyncCallbacks.process(dummyApi(2));
-asyncCallbacks.process(dummyApi(6));
-asyncCallbacks.process(dummyApi(4));
-asyncCallbacks.process(dummyApi(5));
-asyncCallbacks.process(dummyApi(6));
-asyncCallbacks.process(dummyApi(7));
-asyncCallbacks.process(dummyApi(8));
-asyncCallbacks.process(dummyApi(9));
-asyncCallbacks.process(dummyApi(10));
+console.log({ id1 });
+
+const id2 = customSetTimeout(() => {
+  console.log("hello 2");
+}, 1000);
+
+console.log({ id2 });
+
+clearAllTimeouts();
+
+// Output
+// Only ids no Hello

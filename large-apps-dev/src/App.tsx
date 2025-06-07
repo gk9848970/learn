@@ -1,7 +1,7 @@
-import { IntersectionObserverLazyLoading } from "./modules/lazy-loading/intersection-observer";
+import { NormalLazyLoad } from "./modules/performance/lazy-loading/normal";
 
 function App() {
-  return <IntersectionObserverLazyLoading />;
+  return <NormalLazyLoad />;
 }
 
 export default App;

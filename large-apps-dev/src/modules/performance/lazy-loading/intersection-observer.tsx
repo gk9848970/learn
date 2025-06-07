@@ -1,7 +1,7 @@
 import { lazy, Suspense, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-const LazyPost = lazy(() => import("../../components/post"));
+const LazyPost = lazy(() => import("../../../components/post"));
 
 export const IntersectionObserverLazyLoading = () => {
   const [showPost, setShowPost] = useState(false);

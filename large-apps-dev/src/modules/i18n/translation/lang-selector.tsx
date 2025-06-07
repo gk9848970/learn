@@ -1,5 +1,5 @@
 import type { Dispatch } from "react";
-import type { LangaugeCodes } from "./provider";
+import type { LangaugeCodes } from "./use-translation";
 
 type Props = {
   locale: LangaugeCodes;

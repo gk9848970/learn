@@ -1,7 +1,7 @@
-import { NormalLazyLoad } from "./modules/performance/lazy-loading/normal";
+import { Redux } from "./modules/state-management/redux";
 
 function App() {
-  return <NormalLazyLoad />;
+  return <Redux />;
 }
 
 export default App;

@@ -1,7 +1,7 @@
-import { Redux } from "./modules/state-management/redux";
+import { Translation } from "./modules/i18n/translation";
 
 function App() {
-  return <Redux />;
+  return <Translation />;
 }
 
 export default App;

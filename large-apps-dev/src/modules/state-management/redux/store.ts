@@ -18,22 +18,25 @@ export const messageSlice = createSlice({
   },
 });
 
-// const initialNameState = {
-//   name: "Gaurav",
-// };
+const initialNameState = {
+  name: "Gaurav",
+};
 
-// export const nameSlice = createSlice({
-//   name: "name",
-//   initialState: initialNameState,
-//   reducers: {
-//     changeName: (state, action: PayloadAction<string>) => {
-//       state.name = action.payload;
-//     },
-//   },
-// });
+export const nameSlice = createSlice({
+  name: "name",
+  initialState: initialNameState,
+  reducers: {
+    changeName: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
+    },
+  },
+});
 
 export const store = configureStore({
-  reducer: messageSlice.reducer,
+  reducer: {
+    messageStore: messageSlice.reducer,
+    nameStore: nameSlice.reducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

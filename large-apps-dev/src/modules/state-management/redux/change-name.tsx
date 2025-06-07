@@ -1,18 +1,18 @@
-// import { useAppDispatch, useAppSelector } from "./hooks";
-// import { nameSlice } from "./store";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { nameSlice } from "./store";
 
-// export const ChangeName = () => {
-//   const name = useAppSelector((state) => state.name);
-//   const dispatch = useAppDispatch();
+export const ChangeName = () => {
+  const name = useAppSelector((state) => state.nameStore.name);
+  const dispatch = useAppDispatch();
 
-//   // const handleMessageChange = () => {
-//   //   dispatch(messageSlice.actions.changeMessage("Khyati"));
-//   // };
+  const handleNameChange = () => {
+    dispatch(nameSlice.actions.changeName("Khyati"));
+  };
 
-//   return (
-//     <div>
-//       {/* <p>{message}</p>
-//       <button onClick={handleMessageChange}>Change Message</button> */}
-//     </div>
-//   );
-// };
+  return (
+    <div>
+      <p>{name}</p>
+      <button onClick={handleNameChange}>Change Message</button>
+    </div>
+  );
+};

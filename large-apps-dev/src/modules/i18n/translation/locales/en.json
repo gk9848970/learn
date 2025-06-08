@@ -1,3 +1,4 @@
 {
-  "greeting": "Hello Khyati"
+  "greeting": "Hello Khyati",
+  "itemsCount": "{itemsCount, plural, =0 {No items} one {1 item} other {{itemsCount} items}}"
 }

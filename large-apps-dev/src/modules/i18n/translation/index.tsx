@@ -1,10 +1,10 @@
-import { FormattedMessage } from "react-intl";
 import { AppWithIntl } from "./provider";
+import { Formatted } from "./formatted";
 
 export const Translation = () => {
   return (
     <AppWithIntl>
-      <FormattedMessage id="greeting" />
+      <Formatted />
     </AppWithIntl>
   );
 };

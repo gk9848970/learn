@@ -1,3 +1,4 @@
 {
-  "greeting": "નમસ્તે ખ્યાતી"
+  "greeting": "નમસ્તે ખ્યાતી",
+  "itemsCount": "{itemsCount, plural, =0 {કોઈ વસ્તુઓ નથી} one {1 વસ્તુ} other {{itemsCount} વસ્તુઓ}}"
 }

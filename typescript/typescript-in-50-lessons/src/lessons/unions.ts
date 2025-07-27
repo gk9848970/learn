@@ -1,5 +1,5 @@
 // Improved EventKind with better semantic meaning
-type EventKind = "conference" | "meetup" | "webinar";
+export type EventKind = "conference" | "meetup" | "webinar";
 
 // Enhanced Talk type with better constraints
 type Talk = {
@@ -41,8 +41,14 @@ type Webinar = EventDetails & {
   talks: Talk;
 };
 
+// Hackathon with improved typing
+export type Hackathon = EventDetails & {
+  kind: "hackathon";
+  mission: string;
+};
+
 // Union type
-type Event = Conference | Webinar | Meetup;
+export type Event = Conference | Webinar | Meetup;
 
 // Type guards for better runtime safety
 export function isConference(event: Event): event is Conference {

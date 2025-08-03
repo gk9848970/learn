@@ -57,3 +57,5 @@ const third = fetchOrder(1);
 const fourth = fetchOrder(x);
 
 function takeString(a: string) {}
+
+takeString(x);

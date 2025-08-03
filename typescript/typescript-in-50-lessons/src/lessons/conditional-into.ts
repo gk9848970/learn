@@ -49,6 +49,11 @@ declare function fetchOrder<Param extends FetchParam>(
   param: Param
 ): FetchReturnParam<Param>;
 
+declare const x: any;
+
 const first = fetchOrder(customer);
 const second = fetchOrder(product);
 const third = fetchOrder(1);
+const fourth = fetchOrder(x);
+
+function takeString(a: string) {}

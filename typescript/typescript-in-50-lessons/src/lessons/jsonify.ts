@@ -92,7 +92,7 @@ type Item = {
   };
 };
 
-declare const itemComplexitem: Item;
+declare const item: Item;
 
 const itemSerializer = new Serializer<Item>();
 

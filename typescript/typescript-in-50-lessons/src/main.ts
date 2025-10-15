@@ -1,1 +1,1 @@
-import "./lessons/generator-function";
+import "./jsx-example";

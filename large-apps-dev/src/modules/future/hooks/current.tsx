@@ -1,33 +1,12 @@
 import { useState, type SyntheticEvent } from "react";
-import { SampleButton } from "./sample-button";
 
 const submitForm = async () => {
-  console.log("Starting first loop");
-  for (let i = 0; i < 1000000000; i++) {
-    // Do nothing
-  }
-
-  console.log("Starting second loop");
-  for (let i = 0; i < 1000000000; i++) {
-    // Do nothing
-  }
-
-  console.log("Starting third loop");
-  for (let i = 0; i < 1000000000; i++) {
-    // Do nothing
-  }
-
-  console.log("Starting fourth loop");
-  for (let i = 0; i < 1000000000; i++) {
-    // Do nothing
-  }
-
   const promise = new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         time: Date.now(),
       });
-    }, 5000);
+    }, 100);
   });
 
   return promise;
@@ -60,7 +39,6 @@ export function CurrentForm() {
         {isPending && <div>Form is getting submitted please wait</div>}
         <button disabled={isPending}>Submit</button>
       </form>
-      <SampleButton />
     </>
   );
 }

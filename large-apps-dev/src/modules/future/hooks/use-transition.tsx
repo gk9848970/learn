@@ -6,7 +6,7 @@ const submitForm = async () => {
       resolve({
         time: Date.now(),
       });
-    }, 4000);
+    }, 500);
   });
 
   return promise;
@@ -32,11 +32,13 @@ export function Transition() {
 
   // display form template
   return (
-    <form onSubmit={formAction}>
-      <input disabled={isPending} id="name" />
-      <div>{JSON.stringify(formState)}</div>
-      {isPending && <div>Form is getting submitted please wait</div>}
-      <button disabled={isPending}>Submit</button>
-    </form>
+    <>
+      <form onSubmit={formAction}>
+        <input disabled={isPending} id="name" />
+        <div>{JSON.stringify(formState)}</div>
+        {isPending && <div>Form is getting submitted please wait</div>}
+        <button disabled={isPending}>Submit</button>
+      </form>
+    </>
   );
 }

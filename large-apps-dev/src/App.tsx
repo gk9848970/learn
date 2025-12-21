@@ -1,13 +1,10 @@
-import { CurrentForm } from "./modules/future/hooks/current";
-import { Transition } from "./modules/future/hooks/use-transition";
+import { ActionState } from "./modules/future/hooks/use-action-state";
 
 function App() {
   return (
     <div>
-      <h1>Current Form</h1>
-      <CurrentForm />
-      <h1>Transition</h1>
-      <Transition />
+      <h1>Action State</h1>
+      <ActionState />
     </div>
   );
 }

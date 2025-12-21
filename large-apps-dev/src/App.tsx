@@ -1,7 +1,7 @@
-import { RightToLeft } from "./modules/i18n/right-to-left";
+import { CurrentForm } from "./modules/future/hooks/current";
 
 function App() {
-  return <RightToLeft />;
+  return <CurrentForm />;
 }
 
 export default App;

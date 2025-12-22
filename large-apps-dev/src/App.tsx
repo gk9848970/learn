@@ -1,10 +1,10 @@
-import { FormStatus } from "./modules/future/hooks/use-form-status";
+import { Optimisitic } from "./modules/future/hooks/use-optimisitic";
 
 function App() {
   return (
     <div>
-      <h1>Form Status</h1>
-      <FormStatus />
+      <h1>Optimistic </h1>
+      <Optimisitic />
     </div>
   );
 }

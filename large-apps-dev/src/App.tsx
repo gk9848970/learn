@@ -1,10 +1,10 @@
-import { CurrentContext } from "./modules/future/api/current";
+import { UsePart1 } from "./modules/future/api/use";
 
 function App() {
   return (
     <div>
-      <h1>Testing current way of context </h1>
-      <CurrentContext />
+      <h1>Use Part I </h1>
+      <UsePart1 />
     </div>
   );
 }

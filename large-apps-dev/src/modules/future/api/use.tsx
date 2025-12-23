@@ -23,7 +23,7 @@ function Display() {
   );
 }
 
-export function CurrentContext() {
+export function UsePart1() {
   const [message, setMessage] = useState("");
 
   return (

@@ -1,10 +1,10 @@
-import { UsePart2 } from "./modules/future/api/use-ii";
+import { Compiler } from "./modules/future/compiler";
 
 function App() {
   return (
     <div>
-      <h1>Use Part II</h1>
-      <UsePart2 />
+      <h1>Compiler Demo</h1>
+      <Compiler />
     </div>
   );
 }

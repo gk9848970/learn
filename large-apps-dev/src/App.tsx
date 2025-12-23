@@ -1,10 +1,10 @@
-import { Optimisitic } from "./modules/future/hooks/use-optimisitic";
+import { CurrentContext } from "./modules/future/api/current";
 
 function App() {
   return (
     <div>
-      <h1>Optimistic </h1>
-      <Optimisitic />
+      <h1>Testing current way of context </h1>
+      <CurrentContext />
     </div>
   );
 }

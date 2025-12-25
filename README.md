@@ -8,8 +8,7 @@ A collection of my ongoing and completed learning journey in software developmen
 - **Prashant Frontend System Design** - Exploring scalable frontend architecture patterns and design principles
 
 ### Books
-- **Large App Development** - Understanding patterns and practices for building large-scale applications
-- **TypeScript in 50 Lessons** - Mastering TypeScript fundamentals and advanced concepts
+- **Web Performance Fundamentals - Nadia Makarevich** - A Frontend Developer’s Guide to Profile and Optimize React Web Apps
 
 ## ✅ Completed
 
@@ -18,21 +17,12 @@ A collection of my ongoing and completed learning journey in software developmen
 
 ### Articles & Blogs
 - [Practical React Query](https://tkdodo.eu/blog/practical-react-query) - Deep dive into React Query patterns and best practices
+- 
 
 ### Books
 - **Tao of React** - React philosophy and advanced patterns
+- **Large App Development** - Understanding patterns and practices for building large-scale applications
+- **TypeScript in 50 Lessons** - Mastering TypeScript fundamentals and advanced concepts
 
-## 🎯 Learning Goals
 
-*Consider adding your learning objectives here, such as:*
-- Master frontend system design principles
-- Build type-safe applications with TypeScript
-- Implement efficient data fetching strategies
-
-## 📝 Notes
-
-*Space for key takeaways, insights, or links to your detailed notes*
-
----
-
-*Last updated: [Current Date]*
+*Last updated: [25/12/2025]*

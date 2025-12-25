@@ -4,9 +4,6 @@ A collection of my ongoing and completed learning journey in software developmen
 
 ## 📚 Currently Learning
 
-### Courses
-- **Prashant Frontend System Design** - Exploring scalable frontend architecture patterns and design principles
-
 ### Books
 - **Web Performance Fundamentals - Nadia Makarevich** - A Frontend Developer’s Guide to Profile and Optimize React Web Apps
 

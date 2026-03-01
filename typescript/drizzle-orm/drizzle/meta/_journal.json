@@ -8,6 +8,13 @@
       "when": 1772278817390,
       "tag": "0000_tired_rick_jones",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1772346833075,
+      "tag": "0001_shiny_lorna_dane",
+      "breakpoints": true
     }
   ]
 }

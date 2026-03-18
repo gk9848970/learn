@@ -48,8 +48,8 @@ export const categoryTable = pgTable("category", {
 })
 
 export const postCategoryTable = pgTable("postCategory", {
-    postId: integer("postId").references(() => postTable.id),
-    categoryId: integer("categoryId").references(() => categoryTable.id)
+    postId: integer("postId").notNull().references(() => postTable.id),
+    categoryId: integer("categoryId").notNull().references(() => categoryTable.id)
 }, t => [
     primaryKey({  columns: [t.postId, t.categoryId]})
 ])
